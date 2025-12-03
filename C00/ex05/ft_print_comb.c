@@ -1,37 +1,30 @@
 #include <unistd.h>
 
-void ft_print_comb(void)
-{
-    char a; // hundreds
-    char b; // tens
-    char c; // ones
+void ft_print_comb(){
 
-    a = '0';
-    while (a <= '7') 
-    {
-        b = a + 1; 
+    char hundreds = '0';
+    char tens = '1';
+    char ones = '2';
 
-        while (b <= '8') 
-        {
-            c = b + 1; 
+    while(hundreds<=57){
+        write(1,&hundreds,1);
 
-            while (c <= '9') 
-            {
-                
-                write(1, &a, 1);
-                write(1, &b, 1);
-                write(1, &c, 1);
+        while(tens<=57){
+            write(1,&tens,1);
+            ones++;
 
-                
-                if (a != '7' || b != '8' || c != '9')
-                {
-                    write(1, ", ", 2);
+                while(ones<=57){
+                write(1,&ones,1);
+                ones++;
                 }
-                
-                c++;
-            }
-            b++;
         }
-        a++;
+
+        
+        hundreds++;
     }
+}
+
+int main(){
+    ft_print_comb();
+    return 0;
 }
